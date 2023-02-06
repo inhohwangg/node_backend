@@ -3,20 +3,20 @@ const Post = require('../schema/posts');
 const postCreate = async (req, res) => {
   try {
     const { title, content } = req.body;
-    const id = await Post.find({});
-    for (let i = 0; i < id.length; i++) {
-      if (
-        id[i].postId === false ||
-        id[i].postId === null ||
-        id[i].postId === undefined
-      ) {
-        let postId = 1;
-        await Post.create({ title, content, postId });
-      } else {
-        let postId = postId + 1;
-        await Post.create({ title, content, postId });
-      }
-    }
+    // const id = await Post.find({});
+    // for (let i = 0; i < id.length; i++) {
+    //   if (
+    //     id[i].postId === false ||
+    //     id[i].postId === null ||
+    //     id[i].postId === undefined
+    //   ) {
+    //     let postId = 1;
+    //     await Post.create({ title, content, postId });
+    //   } else {
+    //     let postId = postId + 1;
+    //     await Post.create({ title, content, postId });
+    //   }
+    // }
     res.status(201).json({ title, content });
   } catch (error) {
     console.log(error, '게시글 생성 오류!');
