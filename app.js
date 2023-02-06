@@ -3,13 +3,12 @@ const app = require('express')();
 const connect = require('./schema/index');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const Post = require('../schema/post');
+const Post = require('./schema/post');
 
 connect();
 
 // 라우터 불러오기
 const postRouter = require('./routes/post');
-const post = require('./schema/post');
 
 // 각종 미들웨어
 app.use(helmet());
