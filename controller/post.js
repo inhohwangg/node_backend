@@ -1,4 +1,4 @@
-const Post = require('../schema/post');
+const Post = require('../schema/posts');
 
 const postCreate = async (req, res) => {
   try {
@@ -17,7 +17,7 @@ const postCreate = async (req, res) => {
         await Post.create({ title, content, postId });
       }
     }
-    res.status(201).json({ id });
+    res.status(201).json({ title, content });
   } catch (error) {
     console.log(error, '게시글 생성 오류!');
     res.status(400).json({ result: false });
@@ -26,8 +26,8 @@ const postCreate = async (req, res) => {
 
 const postRead = async (req, res) => {
   try {
-    const read = await Post.find();
-    res.status(200).json({ result: true, read });
+    let list = await Post.find({});
+    res.status(200).json({ result: true, list });
   } catch (error) {
     console.log(error, '게시글 조회 실패');
     res.status(400).json({ result: false });

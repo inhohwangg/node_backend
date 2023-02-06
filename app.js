@@ -3,7 +3,7 @@ const app = require('express')();
 const connect = require('./schema/index');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const Post = require('./schema/post');
+const Post = require('./schema/posts');
 
 connect();
 
