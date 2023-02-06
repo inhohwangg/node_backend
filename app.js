@@ -19,6 +19,10 @@ app.use(express.urlencoded({ extended: false }));
 // 라우터 연결
 app.use('/api', [postRouter]);
 
+app.get('/', (req, res) => {
+  res.send('잘 작동하는듯');
+});
+
 app.listen(3000, () => {
   console.log('3000 port Backend Server Start!');
 });
