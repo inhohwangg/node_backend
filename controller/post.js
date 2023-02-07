@@ -1,11 +1,15 @@
 const Post = require('../schema/posts');
+const dayjs = require('dayjs');
 
-// 게시글 생성
+// 게시글 생성기능
 const postCreate = async (req, res) => {
   try {
+    let now = dayjs();
     const { userId } = req.query;
     const { title, content } = req.body;
-    await Post.create({ userId, title, content });
+    let createDate = now.format('YYYY-MM-DD HH:mm:ss');
+    console.log(createDate);
+    await Post.create({ userId, title, content, createAt: createDate });
     const list = await Post.find();
     res.status(201).json({ list });
   } catch (error) {
@@ -14,7 +18,7 @@ const postCreate = async (req, res) => {
   }
 };
 
-// 게시글 조회
+// 게시글 조회기능
 const postRead = async (req, res) => {
   try {
     let list = await Post.find({});
@@ -25,12 +29,17 @@ const postRead = async (req, res) => {
   }
 };
 
-// 게시글 수정
+// 게시글 수정기능
 const postModify = async (req, res) => {
   try {
     const { postId } = req.query;
     const { title, content } = req.body;
-    await Post.updateOne({ postId: postId }, { $set: { title, content } });
+    let now = dayjs();
+    let createDate = now.format('YYYY-MM-DD HH:mm:ss');
+    await Post.updateOne(
+      { postId: postId },
+      { $set: { title, content, updateAt: createDate } }
+    );
     let result = await Post.find({ postId });
     res.status(200).json({ result });
   } catch (error) {
@@ -39,6 +48,7 @@ const postModify = async (req, res) => {
   }
 };
 
+// 게시글 삭제기능
 const postDelete = async (req, res) => {
   try {
     const { postId } = req.query;

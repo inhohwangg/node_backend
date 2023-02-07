@@ -4,6 +4,7 @@ autoIncrement.initialize(mongoose.connection);
 
 const postSchema = new mongoose.Schema({
   postId: {
+    required: true,
     type: Number,
     default: 0,
   },
