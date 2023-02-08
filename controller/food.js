@@ -71,7 +71,7 @@ const Random = async (req, res) => {
     let rand = Math.floor(Math.random() * list.length);
     let foodIds = rand;
     let result = await Food.findOne({ foodId: foodIds });
-    await res.status(200).json(result);
+    await res.status(200).json([result]);
   } catch (error) {
     console.log(error, 'errorr ouccur');
     res.status(400).json(error);
