@@ -64,9 +64,24 @@ const dinerDelete = async (req, res) => {
   }
 };
 
+// 메뉴 랜덤 생성하기
+const Random = async (req, res) => {
+  try {
+    let list = await Food.find();
+    let rand = Math.floor(Math.random() * list.length);
+    let foodIds = rand;
+    let result = await Food.findOne({ foodId: foodIds });
+    await res.status(200).json(result);
+  } catch (error) {
+    console.log(error, 'errorr ouccur');
+    res.status(400).json(error);
+  }
+};
+
 module.exports = {
   dinerCreate,
   menuGet,
   dinerPut,
   dinerDelete,
+  Random,
 };
