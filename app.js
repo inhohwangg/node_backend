@@ -10,6 +10,7 @@ connect();
 // 라우터 불러오기
 const postRouter = require('./routes/post');
 const foodRouter = require('./routes/food');
+const userRouter = require('./routes/user');
 
 // 각종 미들웨어
 app.use(helmet());
@@ -19,7 +20,7 @@ app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: false }));
 
 // 라우터 연결
-app.use('/api', [postRouter, foodRouter]);
+app.use('/api', [postRouter, foodRouter, userRouter]);
 
 app.get('/', (req, res) => {
   res.send('잘 작동하는듯');
