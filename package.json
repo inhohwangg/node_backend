@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "aedes": "^0.49.0",
+    "bcrypt": "^5.1.0",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -21,6 +22,7 @@
     "mongoose-auto-increment": "^5.0.1",
     "morgan": "^1.10.0",
     "mqtt": "^4.3.7",
+    "node-snowflake": "^0.0.1",
     "nodemon": "^2.0.20",
     "update": "^0.7.4"
   },
