@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../schema/user');
 const jwt = require('jsonwebtoken');
-const secretKey = process.env.key;
+// const secretKey = process.env.key;
 require('dotenv').config();
 
 //! 회원가입 API
@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
       password == undefined
     )
       throw Error;
-    res.status(200).json({ userId, password, token });
+    res.status(200).json({ userId, password });
   } catch (e) {
     console.log(e);
     res.status(400).json({ result: false });
