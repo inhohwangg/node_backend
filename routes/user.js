@@ -27,10 +27,9 @@ router.post('/login', async (req, res) => {
     const { userId, password } = req.body;
 
     const user = await User.findOne({ userId });
-    console.log(user.userId);
+    console.log(user);
 
-    if (!user.userId)
-      return res.status(401).json({ error: 'Invalid credentials' });
+    if (!user) return res.status(401).json({ error: 'Invalid credentials' });
     // const isMatch = await user.comparePassword(password);
 
     // if (!isMatch) return res.status(401).json({ error: 'Invalid credentials' });
