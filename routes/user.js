@@ -12,7 +12,7 @@ router.post('/signup', async (req, res) => {
     const user = new User({ userId, password, name });
     await user.save();
 
-    const token = jwt.sign({ userId: user._id }, process.env.key);
+    const token = jwt.sign({ userId: user._id });
 
     res.json({ token });
   } catch (e) {
@@ -27,14 +27,16 @@ router.post('/login', async (req, res) => {
     const { userId, password } = req.body;
 
     const user = await User.findOne({ userId });
-    console.log(user);
+    console.log(user.userId);
 
-    if (!user) return res.status(401).json({ error: 'Invalid credentials' });
+    if (!user.userId)
+      return res.status(401).json({ error: 'Invalid credentials' });
     // const isMatch = await user.comparePassword(password);
 
     // if (!isMatch) return res.status(401).json({ error: 'Invalid credentials' });
-
+    console.log('this?');
     const token = jwt.sign({ userId: user.userId }, secretKey);
+    console.log('this????');
     if (
       userId == '' ||
       userId == null ||

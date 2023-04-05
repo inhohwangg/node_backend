@@ -12,7 +12,7 @@ const userRouter = require('./routes/user');
 
 // 각종 미들웨어
 app.use(helmet());
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
