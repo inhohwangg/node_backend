@@ -33,9 +33,9 @@ router.post('/login', async (req, res) => {
     // const isMatch = await user.comparePassword(password);
 
     // if (!isMatch) return res.status(401).json({ error: 'Invalid credentials' });
-    console.log('this?');
-    const token = jwt.sign({ userId: user.userId }, secretKey);
-    console.log('this????');
+    // console.log('this?');
+    // const token = jwt.sign({ userId: user.userId }, secretKey);
+    // console.log('this????');
     if (
       userId == '' ||
       userId == null ||
